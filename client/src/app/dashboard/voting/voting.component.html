@@ -1,0 +1,51 @@
+<nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0" style="background:linear-gradient(40deg,#45cafc,#303f9f)!important">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" [routerLink]="['/home']">Home </a>
+<ul class="navbar-nav px-3">
+<li class="nav-item text-nowrap">
+  <a class="nav-link" *ngIf="this.auth.login" href="/login" (click)="logout()">Sign out</a>
+</li>
+</ul>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/dashboard']">Dashboard
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/dashboard/vote']">
+          Tambah vote
+        </a>
+      </li>
+    </ul>
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>Fadhel Ijlal Falah 2018</span>
+      </h6>
+  </div>
+</nav>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
+    <h2 class="card-title">{{this.userData.name}}</h2>
+  <form *ngIf="this.vote === true" class="form-signin" (submit)="userDataForm.reset()" #userDataForm="ngForm">
+    <div class="card-deck col-md-11 mr-auto">
+        <div *ngFor="let field of this.userData.options" class="card">
+          <img *ngIf="field.avatar.length > 0" class="card-img-top" [src]="'http://localhost:3000/' + field.avatar" alt="{{field.optionName}}">
+          <img *ngIf="field.avatar.length === 0" class="card-img-top" alt="{{field.optionName}}">
+          <div class="card-body">
+            <h5 class="card-title">{{field.optionName}}</h5>
+          </div>
+          <div class="card-footer"><button id="Send" (click)="this.updateData(this.userData._id,field.optionName)" name="Send" class="btn btn-primary">Vote</button></div>
+        </div>
+      </div>
+  </form>
+  <div *ngIf="this.vote === false">
+  <canvas id="myChart" width="400" height="400"></canvas>
+  </div>
+</main>
+</div>
+</div>
+

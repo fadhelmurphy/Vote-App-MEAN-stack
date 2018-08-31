@@ -1,0 +1,65 @@
+<nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0" style="background:linear-gradient(40deg,#45cafc,#303f9f)!important">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" [routerLink]="['/home']">Home </a>
+<ul class="navbar-nav px-3">
+<li class="nav-item text-nowrap">
+  <a class="nav-link" *ngIf="auth.login" href="/login" (click)="this.logout()">Sign out</a>
+</li>
+</ul>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/dashboard']">Dashboard
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/dashboard/vote']">
+          Tambah vote
+        </a>
+      </li>
+    </ul>
+
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Saved reports</span>
+      <a class="d-flex align-items-center text-muted" href="#">
+        <span data-feather="plus-circle"></span>
+      </a>
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          Current month
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          Last quarter
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          Social engagement
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          Year-end sale
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
+    <h2 class="card-title">{{this.crud.userData.name}}</h2>
+<canvas id="myChart" width="600" height="600"></canvas>
+</main>
+</div>
+</div>

@@ -1,0 +1,43 @@
+<div class="jumbotron jumbotron-fluid" style="background:linear-gradient(40deg,#45cafc,#303f9f)!important">
+  <div class="container align-items-center">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+          <a class="navbar-brand text-primary" [routerLink]="['/']">AyoVote</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav mr-auto">
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/login']">Login</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dashboard
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]="['/dashboard']">View all votes</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" [routerLink]="['/dashboard/vote']">Add votes</a>
+                </div>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-md-0">
+              <input class="form-control" type="text" #pencarian (input)="apdet(pencarian.value)" (keyup)="0" placeholder="Search" aria-label="Search">
+            </form>
+          </div>
+        </nav>
+        <div class="row mt-md-5">
+          <div class="col">
+            <div class="blockquote text-center text-light">
+              <h1 class="display-2"><strong>{{title}}</strong></h1>
+              <p>{{desc}}</p>
+              <a role="button" class="btn btn-outline-light" [routerLink]="['/dashboard']">Klik disini!</a>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>

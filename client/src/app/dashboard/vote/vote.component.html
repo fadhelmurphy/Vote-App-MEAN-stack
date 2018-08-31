@@ -1,0 +1,105 @@
+<nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0" style="background:linear-gradient(40deg,#45cafc,#303f9f)!important">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" [routerLink]="['/home']">Home </a>
+<ul class="navbar-nav px-3">
+  <li class="nav-item text-nowrap">
+    <a class="nav-link" href="/login" (click)="this.logout()">Sign out</a>
+  </li>
+</ul>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/dashboard']">Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/dashboard']">
+            <span data-feather="file"></span>
+            Tambah vote
+          </a>
+        </li>
+      </ul>
+
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>Fadhel Ijlal Falah 2018</span>
+      </h6>
+    </div>
+  </nav>
+
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <form class="form-horizontal" (submit)="saveData();userDataForm.reset()" enctype="multipart/form-data" #userDataForm="ngForm">
+          <fieldset>
+
+            <!-- Form Name -->
+            <legend>
+              <h2 class="text-left">Aplikasi Vote</h2>
+            </legend>
+            <div class="alert alert-secondary" role="alert">
+              Jika salah upload gambar atau option,klik delete
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label">Nama pemilihan</label>
+              <div class="col-md">
+                <input [(ngModel)]="this.userData.name" name="name" placeholder="Nama pemilihan" class="form-control input-md" type="text">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <ng-container *ngFor="let field of fieldArray; let i = index" >
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="Name">Pilihan {{i+1}}</label>
+              <div class="col-md">
+                <input *ngIf="field.optionName.length > 0" [(ngModel)]="field.optionName[0]" name="{{field.optionName}}" [ngModelOptions]="{standalone: true}" placeholder="Option"
+                  class="form-control input-md" type="text" />
+                <input *ngIf="field.optionName.length == 0" [(ngModel)]="field.optionName[0]" name="field.optionName" placeholder="Option"
+                  class="form-control input-md" type="text" />
+                </div>
+              </div>
+              <div class="form-group">
+                  <label class="col-md-4 control-label" for="Name">Pilih gambar / thumbnail</label><br/>
+                <input class="col-md-4" (change)="beforeupload($event)" type="file" />
+              </div>
+              <div class="form-group">
+                  <div class="col-md">
+                <button class="btn btn-danger btn-sm" type="button" (click)="deleteFieldValue(i)">x Delete</button>
+              </div>
+              </div>
+              </ng-container>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="Name">Pilihan</label>
+              <div class="col-md">
+                <input [(ngModel)]="userData.optionName[0]" name="optionName" placeholder="Option" class="form-control input-md" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+            <label class="col-md-4 control-label" for="Name">Pilih gambar / thumbnail</label><br/>
+            <input class="col-md-4" id="ler" type="file" />
+            <p class="col-md-4 card-text"></p>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md">
+            <button class="btn btn-info btn-sm" type="button" (click)="addFieldValue()">+ Tambah pilihan</button>
+            </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+              <div class="col-md-4">
+                <button id="Send" name="Send" (click)="onUpload()" class="btn btn-primary">> Kirim</button>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+
+  </main>
+</div>
+</div>

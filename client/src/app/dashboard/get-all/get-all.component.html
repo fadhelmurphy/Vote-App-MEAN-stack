@@ -1,0 +1,27 @@
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+    <h1 class="h2">Dashboard</h1>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Pemilihan</th>
+          <th>Kandidat</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of this.crud.userData.reverse() |  FilterPipe : cari.value; let i = index">
+          <td>{{i+1}}</td>
+          <td><a [routerLink]="['/dashboard/vote/',s._id]">{{s.name}}</a></td>
+          <td><ng-container *ngFor="let t of s.options">{{t.optionName}},</ng-container></td>
+          <th>
+              <a role="button" class="btn btn-primary btn-sm mr-2" [attr.href]="'/dashboard/vote/'+s._id">Vote</a>
+              <a role="button" class="btn btn-info btn-sm mr-2" [routerLink]="'/dashboard/result/'+s._id">Hasil</a>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>

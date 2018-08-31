@@ -1,0 +1,31 @@
+<p>
+  upload works!
+</p>
+<input id="ler" (change)="beforeupload($event)" type="file" />
+<input id="ler" (change)="beforeupload($event)" type="file" />
+<ng-container *ngFor="let url of urls">
+<img [src]="url" class="rounded mb-3" width="180"/><br/>
+</ng-container>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="col">2</th>
+      <td><input id="ler" (change)="beforeupload($event)" type="file" /></td>
+      <td><input id="ler" (change)="beforeupload($event)" type="file" /></td>
+    </tr>
+    <tr>
+      <th scope="col">1</th>
+      <td *ngFor="let url of urls.reverse()"><img [src]="url" class="rounded mb-3" width="180"/><br/></td>
+    </tr>
+  </tbody>
+</table>
+<button type="button" class="btn btn-success btn-s" (click)="onUpload()">
+Upload
+                </button>

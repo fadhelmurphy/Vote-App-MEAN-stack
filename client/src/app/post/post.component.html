@@ -1,0 +1,6 @@
+<app-header></app-header>
+<div class="blog-post container">
+    <h2 class="blog-post-title">{{data.name}}</h2>
+    <p class="blog-post-meta">December 23, 2013 by {{data.author}}</p>
+  <div [innerHTML]="data.content"></div>
+    </div>
